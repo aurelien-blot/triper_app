@@ -414,17 +414,18 @@ function showFavorites(){
 }
 
 function showHisto(){
+    $('.choice').hide();
+
     $.get(
         'http://localhost/triper/triper/public/histo/api/v1',
-        {'userId': 1},
+        {'userId': userJson.data.id},
         function(data){
-
-            $(data.data).each(function () {
-                console.log(this);
-            })
+           var content= data;
+            showResults(content);
         },
         'json'
     );
+
 }
 function initConnected(){
     $('#loginDiv').html('');
@@ -438,6 +439,8 @@ function initConnected(){
         userJson=null;
         showUserNav();
         $('#userDiv').toggle();
+        $('.choice').hide();
+        $('#search').show();
 
     });
     $('#starNavIcon').on("click", function () {
