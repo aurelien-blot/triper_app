@@ -421,7 +421,7 @@ function showHisto(){
         {'userId': userJson.data.id},
         function(data){
            var content= data;
-            showResults(content);
+               showResults(content);
         },
         'json'
     );
@@ -460,7 +460,7 @@ function loginAPIget(log, pwd){
         { login : log, pwd:pwd},
         function (data) {
             if(data.status != 'OK'){
-
+                console.log(data.message);
             }
             else{
                 userJson =  data;
